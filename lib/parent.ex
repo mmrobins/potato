@@ -7,7 +7,7 @@ defmodule Parent do
 
   def init([]) do
     babysitters = [
-      worker(Babysitter, [[:hello]])
+      worker(Babysitter, [])
     ]
 
     supervise(babysitters, strategy: :one_for_one)

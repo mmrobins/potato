@@ -13,7 +13,14 @@ defmodule Babysitter do
     ]
 
     [h|t] = children
-    GenServer.cast(h, :pass, t)
-    supervise(children, strategy: :one_for_one)
+    #IO.inspect self()
+    #Child.handle_cast(h, :pass, t)
+    #GenServer.cast(h, {:pass, children})
+    IO.puts "got here"
+    #IO.inspect pid
+    #IO.inspect Supervisor.which_children(pid)
+    {:ok, pid} = supervise(children, strategy: :one_for_one)
+    IO.inspect pid
+    {:ok, pid}
   end
 end
